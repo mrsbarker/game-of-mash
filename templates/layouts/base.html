@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+  {{ bootstrap.load_css() }}
+  <title>M.A.S.H.{% block title %}{% endblock %}</title>
+  {% block head %}<link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">{% endblock %}
+</head>
+<body>
+  <div class="container text-center my-5">
+    {% block content %}
+    {% endblock %}
+  </div>
+  
+</body>
+</html>

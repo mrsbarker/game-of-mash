@@ -1,0 +1,10 @@
+{% extends "layouts/base.html" %}
+{% block title %} - Add{% endblock %}
+{% block content %}
+<div class="container">
+  <a href="{{url_for('add_option', kind='spouse')}}" class="btn btn-outline-dark">Spouse</a>
+  <a href="{{url_for('add_option', kind='career')}}" class="btn btn-outline-dark">Career</a>
+  <a href="{{url_for('add_option', kind='vehicle')}}" class="btn btn-outline-dark">Vehicle</a>
+  <a href="{{url_for('add_option', kind='salary')}}" class="btn btn-outline-dark">Salary</a>
+</div>
+{% endblock %}

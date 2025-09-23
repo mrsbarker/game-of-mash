@@ -1,0 +1,97 @@
+{% extends "layouts/mashform.html" %}
+{% block title %} - Results{% endblock %}
+
+{% block spouse %}
+  {% for field in options %}
+    {% if "spouse" in field.category and field.value not in selected["spouse"] %} 
+      <p><s>{{ field.value }}</s></p>
+    {% elif "spouse" in field.category %}
+      <p class="selection">{{ field.value }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block career %}
+  {% for field in options %}
+    {% if "career" in field.category and field.value not in selected["career"] %} 
+      <p><s>{{ field.value }}</s></p>
+    {% elif "career" in field.category %}
+    <p class="selection">{{ field.value }}</p>
+      
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block vehicle %}
+  {% for field in options %}
+    {% if "vehicle" in field.category and field.value != selected["vehicle"] %} 
+      <p><s>{{ field.value }}</s></p>
+    {% elif "vehicle" in field.category %}
+      <p class="selection">{{ field.value }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block kids %}
+  {% for field in options %}
+    {% if "kids" in field.category and field.value != selected["kids"] %} 
+      <p><s>{{ field.value }}</s></p>
+    {% elif "kids" in field.category %}
+      <p class="selection">{{ field.value }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block salary %}
+  {% for field in options %}
+    {% if "salary" in field.category and field.value not in selected["salary"] %} 
+      <p><s>{{ field.value }}</s></p>
+    {% elif "salary" in field.category %}
+      <p class="selection">{{ field.value }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block spiral %}
+<div class="col align-self-center">
+  <h5 class="display-2 rock-salt recolor my-auto">{{ spins }}</h5>
+</div>
+  
+{% endblock %}
+
+{% block content %}
+  <div class="mt-3">
+    <h1 class="display-2">Congratulations!!</h1>
+    <h3 class="w-75 mx-auto my-4">You and <span class="recolor">{{selected.spouse}}</span> are happily(?) married with <span class="recolor">{{selected.kids}}</span> kids living in a lovely <span class="recolor">{{selected.house}}</span>. 
+      As a successful <span class="recolor">{{selected.career}}</span> you make <span class="recolor">{{selected.salary}}</span> and drive a <span class="recolor">{{selected.vehicle}}</span>.<br>
+      See below for the official certificate of M.A.S.H.!
+    </h3>
+  </div>
+
+  <div class="lines" id="certificate">
+    <div class="display-2 rock-salt mb-5">
+    {% block heading %}
+      {% for letter in "MASH" %}
+        {% if letter.lower() != selected["house"][0] %}
+          <s>{{letter}}</s>.
+        {% else %}
+          <span class="selection">{{letter}}</span>.
+        {% endif %}
+      {% endfor %}
+    {% endblock %}
+    </div>
+
+    {% block form_content %}
+      {{ super() }}
+    {% endblock %}
+  </div>
+
+  <div>
+    <h4 class="m-4">Unhappy? You can always play again!</h4>
+    <a href="{{url_for('home')}}" class="btn btn-outline-dark my-2">M.A.S.H.</a>
+
+  </div>
+
+{% block instructions %}{% endblock %}
+{% endblock %}
+

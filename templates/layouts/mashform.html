@@ -1,0 +1,69 @@
+{% extends "layouts/base.html" %}
+{% block head %}
+{{ super() }}
+<script src="{{url_for('static', filename='/js/jquery.min.js')}}"></script>
+{% endblock %}
+{% block content %}
+<div class="container my-5">
+  <h1 class="display-2 text-center pt-2">{% block heading %}M.A.S.H.{% endblock %}</h1>
+  <div class="text-center my-5">
+    {% block instructions %}
+    <h4 class="display-6 text-center rock-salt">Instructions</h4>
+    {% endblock %}
+  </div>
+
+  {% block form_content %}
+  <div class="row row-cols-1 row-cols-md-3 g-4 w-75 mx-auto">
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header text-center rock-salt py-2 mt-2">Spouse</h5>
+        {% block spouse %}
+        <p>Placeholder</p>
+        {% endblock %}
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header text-center rock-salt py-2 mt-2">Career</h5>
+        {% block career %}
+        <p>Placeholder</p>
+        {% endblock %}
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header text-center rock-salt py-2 mt-2">Vehicle</h5>
+        {% block vehicle %}
+        <p>Placeholder</p>
+        {% endblock %}
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header text-center rock-salt py-2 mt-2">Kids</h5>
+        {% block kids %}
+        <p>Placeholder</p>
+        {% endblock %}
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header text-center rock-salt py-2 mt-2">Salary</h5>
+        {% block salary %}
+        <p>Placeholder</p>
+        {% endblock %}
+      </div>
+    </div>
+    {% block spiral %}
+    {% endblock %}
+  </div>  
+  {% endblock %}
+
+  {% block postform %}
+  {% endblock %}  
+
+{% endblock %}

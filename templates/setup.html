@@ -1,0 +1,61 @@
+{% from "macros/mashfield.html" import render_field %}
+{% extends "layouts/mashform.html" %}
+
+{% block instructions %}
+  {{ super() }}
+  <p class="lead fs-4 text-wrap">Like the version i played in real life many moons ago, users can only input <span class="recolor">two options</span> in each of the categories below. 
+      Choices can be entered in the <span class="recolor">bottom two input fields</span> of each section. 
+      The <span class="recolor">Spouse, Career, and Vehicle</span> categories take <span class="recolor">string</span> inputs while the <span class="recolor">Kids</span> inputs take <span class="recolor">integers</span> 
+      and <span class="recolor">Salary</span> inputs take <span class="recolor">decimals</span>.</br>And if you want the M.A.S.H. computer to provide ALL options 
+      just leave everything blank and Confirm Choices.</p>
+{% endblock %}
+
+{% block spouse %}
+  {% for field in form %}
+    {% if "spouse" in field.name %} 
+      <p>{{ render_field(field) }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block career %}
+  {% for field in form %}
+    {% if "job" in field.name %} 
+      <p>{{ render_field(field) }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block vehicle %}
+  {% for field in form %}
+    {% if "car" in field.name %} 
+      <p>{{ render_field(field) }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block kids %}
+  {% for field in form %}
+    {% if "kids" in field.name %} 
+      <p>{{ render_field(field) }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block salary %}
+  {% for field in form %}
+    {% if "money" in field.name %} 
+      <p>{{ render_field(field) }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block form_content %}
+  <form method="post" action="{{url_for('start')}}">
+    {{ super() }}
+    {{form.csrf_token}}
+    <div class="my-3 text-center">
+      <input type="submit" value="Confirm Choices"/>
+    </div>
+  </form>
+{% endblock %}

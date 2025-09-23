@@ -1,0 +1,27 @@
+{% extends "layouts/base.html" %}
+{% block title %} - Home{% endblock %}
+{% block content %}
+
+<div class="mt-5 p-5">
+  <h1 class="display-5 p-1">Wanna Play <br><span class="recolor">M.A.S.H</span>?</h1>
+  <p class="lead mt-3">Select preferred sex of your partner...</p>
+  <form name="intro" action="{{url_for('home')}}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="row row-cols-1 justify-content-center">
+      <div class="col pt-1">
+        <label for="pref1">Female</label>
+        <input type="checkbox" id="pref1" name="sex" value="F" checked/>
+      </div>
+      <div class="col pt-1">
+        <label for="pref2">Male</label>
+        <input type="checkbox" id="pref2" name="sex" value="M" checked/>
+      </div>
+      <div class="row m-3">
+        <div class="col">
+          <input type="submit" class="btn btn-outline-dark" value="Submit">
+        </div>
+      </div>
+    </div>
+  </form>  
+</div>
+{% endblock %}

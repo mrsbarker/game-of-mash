@@ -1,0 +1,11 @@
+
+{% macro render_field(field) %}
+  {% if "1" in field.name or "2" in field.name %}
+    {{ field(class_="form__field mb-2 mx-3", readonly=True)}}
+  {% else %}
+    {{ field(class_="form__field mb-2 mx-3")}}
+  {% endif %}
+  {%- for error in field.errors %}
+      <span class="form__error">{{ error }}</span>
+  {% endfor %}
+{% endmacro %}

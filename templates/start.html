@@ -1,0 +1,71 @@
+{% from "macros/mashfield.html" import render_filled %}
+{% extends "layouts/mashform.html" %}
+
+{% block instructions %} 
+{{ super() }}
+<p class="lead fs-4 text-wrap">The M.A.S.H. options from the previous screen are finalized below. <br>Now it's time to get the magic number via spiral. Click the <span class="recolor">"click me"</span> text in
+   the bottom right corner of the sheet. Like in real M.A.S.H. you dictate when the spiral stops, however in this app you'll 
+   <span class="recolor">press the spacebar</span> to indicate the spiral's end. While the spiral is being drawn the canvas is hidden from the user 
+   to make it more random, but will be revealed upon the spacebar interaction. <span class="recolor">Good luck!</span>
+  </p>
+{% endblock %}
+
+{% block spouse %}
+  {% for field in form %}
+    {% if "spouse" in field.name %} 
+      <p>{{ field.data }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block career %}
+  {% for field in form %}
+    {% if "job" in field.name %} 
+      <p>{{ field.data }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block vehicle %}
+  {% for field in form %}
+    {% if "car" in field.name %} 
+      <p>{{ field.data }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block kids %}
+  {% for field in form %}
+    {% if "kids" in field.name %} 
+      <p>{{ field.data }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block salary %}
+  {% for field in form %}
+    {% if "money" in field.name %} 
+      <p>{{ field.data }}</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block spiral %}
+  <div class="col text-center">
+    <canvas width="300" height="350"></canvas>
+    {{ form.spun(readonly=True) }}
+    <p>Refresh if "click me" not visible.</p>
+  </div>
+{% endblock %}
+
+{% block form_content %}
+<form method="post" action="{{url_for('play_mash')}}">
+  {{super()}}
+  {{form.csrf_token}}
+  <input type="submit" value="Play" id="button" disabled/>
+</form>
+{% endblock %}
+
+{% block postform %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/spiralizer.js') }}"></script>
+{% endblock %}
