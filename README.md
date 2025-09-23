@@ -2,4 +2,4 @@ Mansion, apartment, shack, or house?! Who didn't love a quick game of MASH back 
 
 To play my version, visit https://mrsbarker.pythonanywhere.com/
 
-To play your own, go ahead and fork the files before making the necessary adjustments to establish a personal database.
+To play your own, go ahead and fork the files before making the necessary adjustments to establish a database of options.
