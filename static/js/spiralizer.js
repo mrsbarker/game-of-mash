@@ -1,7 +1,6 @@
 var pressed;
 var numbr = 0;
 
-
 function draw(canvas, radius, angle) {
     ctx = canvas.getContext("2d");
     //ctx.beginPath();
@@ -15,7 +14,6 @@ function draw(canvas, radius, angle) {
     ctx.stroke();
 }
 
-
 function stopDraw() {
     pressed = true;
     $("canvas").css("background-color", "white");
@@ -23,8 +21,6 @@ function stopDraw() {
     $("#button").prop('disabled',false);
     
 }
-
-
 
 window.addEventListener('DOMContentLoaded', () => {
     var canv = document.querySelector("canvas");
@@ -46,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function animate(timestamp) {
         ctx.font = "normal 24px serif"
         ctx.fillStyle = "pink";
-        ctx.fillText("press 'spacebar' when ready", canv.width / 15, canv.width/10);
+        ctx.fillText("click here again when ready", canv.width / 15, canv.width/10);
         if (!startTime || timestamp - startTime >= 50) {
             startTime = timestamp;
         }
@@ -65,9 +61,13 @@ window.addEventListener('DOMContentLoaded', () => {
             stopDraw();
         }
     }    
-    canv.addEventListener('click', () => {
+    canv.addEventListener('click', startSpin);
+    function startSpin() {
         ctx.reset();
         $("canvas").css("background-color"," black");
         requestAnimationFrame(animate);
-    })
+        canv.removeEventListener('click', startSpin);
+        canv.addEventListener('click', stopDraw);
+    }
 })
+
