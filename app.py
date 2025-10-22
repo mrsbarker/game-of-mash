@@ -52,10 +52,7 @@ def start():
     global MASH
     MASH = MashForm()
     counter = {k:0 for k in ["spouse", "career", "vehicle", "kids", "salary"]}
-    if request.method == "GET":
-        return render_template("setup.html", form = MASH)
-
-    elif MASH.validate_on_submit():
+    if request.method == "POST" and MASH.validate_on_submit():
         need = []
         inputs = []
         global MASHOPTS
@@ -115,6 +112,9 @@ def start():
                     MASH[temp[i]].data = f"${chosen[i]:,.2f}"
                 [MASHOPTS.append(game.MashOption("salary", x.data)) for x in [MASH.money1, MASH.money2, MASH.money3, MASH.money4]]
         return redirect(url_for('play_mash'))
+    else
+        return render_template("setup.html", form = MASH)
+        
     
 @app.route("/play", methods=["GET","POST"])
 def play_mash():
@@ -165,3 +165,4 @@ def add_option(kind):
 if __name__ == "__main__":
 
     app.run()
+
