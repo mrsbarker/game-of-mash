@@ -51,11 +51,12 @@
 {% endblock %}
 
 {% block form_content %}
-  <form method="post" action="{{url_for('start')}}">
+  <form method="post" action="{{url_for('start')}}" novalidate>
     {{ super() }}
     {{form.csrf_token}}
     <div class="my-3 text-center">
       <input type="submit" value="Confirm Choices"/>
     </div>
   </form>
+
 {% endblock %}
