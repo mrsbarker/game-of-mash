@@ -25,6 +25,14 @@ h1 {
   font-style: normal;
 }
 
+.form__error {
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  margin: 0px;
+  padding: 0px;
+}
+
 .recolor {
   color:hotpink;
 
@@ -50,4 +58,5 @@ h1 {
     linear-gradient(white, white 100px, transparent 101px),
     repeating-linear-gradient(transparent 0px, transparent 24px, #69b4ff 25px);
 }
+
 
